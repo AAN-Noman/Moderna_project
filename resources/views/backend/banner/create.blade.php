@@ -6,7 +6,7 @@
 <section>
     <div class="container">
         <div class='row'>
-            <div class="col-md-12 ">
+            <div class="col-md-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Add Banner <a href="{{ route('backend.banner.index') }}" class="btn btn-primary btn-sm">All Banner</a></h2>
@@ -35,7 +35,7 @@
                             <div class="form-group row ">
                                 <label class="control-label col-md-3 col-sm-3 ">Button:</label>
                                 <div class="col-md-9 col-sm-9 ">
-                                    <input type="text" class="form-control" placeholder="Button"
+                                    <input type="text" class="form-control" placeholder="Description link"
                                         name="button">
                                 </div>
                             </div>

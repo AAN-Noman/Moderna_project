@@ -16,8 +16,9 @@ class BannerController extends Controller
      */
     public function index()
     {
+        $DataTranshed = Banner::onlyTrashed()->get();
         $datas = Banner::all();
-        return view('backend.banner.index', compact('datas'));
+        return view('backend.banner.index', compact('datas', 'DataTranshed'));
     }
 
     /**
@@ -120,7 +121,56 @@ class BannerController extends Controller
     public function destroy(Banner $banner)
     {
         $banner->delete();
+        $banner->status = 2;
         $banner->save();
         return back()->with('success', 'Data successfully deleted!!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Banner  $banner
+     * @return \Illuminate\Http\Response
+     */
+    public function status(Banner $banner)
+    {
+        if($banner->status == 1){
+            $banner->status = 2;
+            $banner->save();
+        }else{
+           $banner->status = 1;
+           $banner->save();
+        }
+        return back()->with('success', 'Status Updated!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $data = Banner::onlyTrashed()->where('id', $id)->first();
+        $data->status = 1;
+        $data->save();
+        $data->restore();
+        return back()->with('success', 'Data successfully restored');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function hardDelete($id)
+    {
+        $data = Banner::withTrashed()->find($id);
+        $path = public_path('storage/banner/'.$data->photo);
+        if(file_exists($path)){
+            unlink($path);
+        }
+        $data -> forceDelete();
+        return back()->with('success', 'Data full Delete');
     }
 }
