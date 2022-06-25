@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\WhyUsController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\ServiceController;
@@ -42,6 +43,15 @@ Route::name("backend.")->group(function(){
     //services
     Route::resource('/service', ServiceController::class)->except(["show"]);
     Route::get('/service/status/{service}', [ServiceController::class, 'status'])->name('service.status');
-    Route::get('/banner/restore/{id}', [ServiceController::class, 'restore'])->name('service.restore');
+    Route::get('/service/restore/{id}', [ServiceController::class, 'restore'])->name('service.restore');
     Route::get('/service/hard/Delete/{id}', [ServiceController::class, 'hardDelete'])->name('service.hardDelete');
+
+    //whyus
+    Route::resource('/whyUs', WhyUsController::class)->except(["show",]);
+    Route::get('/whyUs/edit/{whyUs}', [WhyUsController::class, 'edit'])->name('whyUs.edit');
+    Route::get('/whyUs/destroy/{whyUs}', [WhyUsController::class, 'destroy'])->name('whyUs.destroy');
+    Route::get('/whyUs/status/{whyUs}', [WhyUsController::class, 'status'])->name('whyUs.status');
+    Route::get('/whyUs/restore/{id}', [WhyUsController::class, 'restore'])->name('whyUs.restore');
+    Route::get('/whyUs/hard/Delete/{id}', [WhyUsController::class, 'hardDelete'])->name('whyUs.hardDelete');
+
 });

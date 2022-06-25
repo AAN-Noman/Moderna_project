@@ -38,13 +38,15 @@
             <div class="container">
                 <div class="row">
                 @foreach ($services as $data)
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
-                        <div class="icon-box icon-box-{{ $data->iconColor }}">
-                          <div class="icon"><i class="bx {{ $data->icon }}"></i></div>
-                          <h4 class="title"><a href="">{{ $data->title }}</a></h4>
-                          <p class="description">{{ $data->description }}</p>
+                    @if ($data->status == 1)
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+                            <div class="icon-box icon-box-{{ $data->iconColor }}">
+                            <div class="icon"><i class="bx {{ $data->icon }}"></i></div>
+                            <h4 class="title"><a href="">{{ $data->title }}</a></h4>
+                            <p class="description">{{ $data->description }}</p>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
