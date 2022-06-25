@@ -4,31 +4,31 @@
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex justify-cntent-center align-items-center">
-        
-            @forelse ($datas as $data)
-            <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <div class="carousel-container">
-                        <h2 class="animate__animated animate__fadeInDown">{{ $data->title }}</h2>
-                        <p class="animate__animated animate__fadeInUp">{{ $data->description }}</p>
-                        <a href="{{ $data->button }}" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+        <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+            @if ($datas->count())
+                @forelse ($datas as $data)
+                    <!-- Slide 1 -->
+                    <div @if ($loop->first) class="carousel-item active" @else class="carousel-item" @endif>
+                        <div class="carousel-container">
+                            <h2 class="animate__animated animate__fadeInDown">{{ $data->title }}</h2>
+                            <p class="animate__animated animate__fadeInUp">{{ $data->description }}</p>
+                            <a href="{{ $data->button }}" class="btn-get-started animate__animated animate__fadeInUp">Read
+                                More</a>
+                        </div>
                     </div>
-                </div>
+                @empty
+                @endforelse
+            @endif
 
-                <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-                </a>
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+            </a>
 
-                <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-                </a>
-            </div>
-            @empty
-            @endforelse
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+            </a>
+        </div>
 
-
-        
     </section><!-- End Hero -->
 
     <main id="main">
@@ -37,18 +37,17 @@
         <section class="services">
             <div class="container">
                 <div class="row">
+                @foreach ($services as $data)
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
-                        <div class="icon-box icon-box-pink">
-                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
-                                excepturi sint occaecati cupiditate non provident</p>
+                        <div class="icon-box icon-box-{{ $data->iconColor }}">
+                          <div class="icon"><i class="bx {{ $data->icon }}"></i></div>
+                          <h4 class="title"><a href="">{{ $data->title }}</a></h4>
+                          <p class="description">{{ $data->description }}</p>
                         </div>
                     </div>
-
-                </div>
-
+                @endforeach
             </div>
+        </div>
         </section><!-- End Services Section -->
 
         <!-- ======= Why Us Section ======= -->

@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Frontend\FrontendController;
 
 /*
@@ -31,9 +32,16 @@ Auth::routes();
 
 Route::name("backend.")->group(function(){
     Route::get('/dashboard', [BackendController::class, 'index'])->name('home');
+
+    //banner
     Route::resource('/banner', BannerController::class)->except(["show"]);
     Route::get('/banner/status/{banner}', [BannerController::class, 'status'])->name('banner.status');
     Route::get('/banner/restore/{id}', [BannerController::class, 'restore'])->name('banner.restore');
     Route::get('/banner/hard/Delete/{id}', [BannerController::class, 'hardDelete'])->name('banner.hardDelete');
-    
+
+    //services
+    Route::resource('/service', ServiceController::class)->except(["show"]);
+    Route::get('/service/status/{service}', [ServiceController::class, 'status'])->name('service.status');
+    Route::get('/banner/restore/{id}', [ServiceController::class, 'restore'])->name('service.restore');
+    Route::get('/service/hard/Delete/{id}', [ServiceController::class, 'hardDelete'])->name('service.hardDelete');
 });

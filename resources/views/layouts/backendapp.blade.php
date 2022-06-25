@@ -60,6 +60,19 @@
                         <a class="collapse-item" href="{{ route('backend.banner.create') }}">Add Banner</a>
                     </div>
                 </div>
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>SERVICES</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('backend.service.index') }}">All Banner</a>
+                        <a class="collapse-item" href="{{ route('backend.service.create') }}">Add Banner</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->

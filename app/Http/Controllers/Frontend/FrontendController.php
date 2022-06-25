@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Banner;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,8 @@ class FrontendController extends Controller
     public function index()
     {
         $datas = Banner::all();
-        return view('frontend.index', compact('datas'));
+        $services = Service::all();
+        return view('frontend.index', compact('datas', 'services'));
     }
 
     /**
@@ -36,7 +38,8 @@ class FrontendController extends Controller
      */
     public function services()
     {
-        return view('frontend.services');
+        $services = Service::all();
+        return view('frontend.services', compact('services'));
     }
 
     /**
