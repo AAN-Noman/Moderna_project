@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\WhyUs;
+use App\Models\Whyus;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class WhyUsController extends Controller
+class WhyusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class WhyUsController extends Controller
      */
     public function index()
     {
-        $datas = WhyUs::all();
-        $DataTranshed = WhyUs::onlyTrashed()->get();
-        return view('backend.services.whyUs.index', compact('datas', 'DataTranshed'));
+        $datas = Whyus::all();
+        return view('backend.services.whyus.index', compact('datas'));
     }
 
     /**
@@ -28,7 +27,7 @@ class WhyUsController extends Controller
      */
     public function create()
     {
-        return view('backend.services.whyUs.create');
+        return view('backend.services.whyus.create');
     }
 
     /**
@@ -40,139 +39,91 @@ class WhyUsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required',
-            'photo' => 'required|mimes:jpeg,jpg,png,gif|max:1024',
+            'title' => "required",
+            "photo" => "required|mimes:png,jpg,gif,jpeg,webp|max:1024"
         ]);
+
         $photo = $request->file('photo');
-        $photo_name = Str::slug($request->title)."_".time().".".$photo->getClientOriginalExtension();
+
+        $photo_name = Str::slug($request->title)."_".time(). ".".$photo->getClientOriginalExtension();
         $uploads_photo = $photo->move(public_path("/storage/whyus/"),$photo_name);
+
         if($uploads_photo){
-            $insert = New WhyUs();
+            $insert = new Whyus();
             $insert->title = $request->title;
             $insert->description = $request->description;
-            $insert->link = $request->link;
             $insert->icon = $request->icon;
+            $insert->title2 = $request->title2;
+            $insert->description2 = $request->description2;
+            $insert->icon2 = $request->icon2;
+            $insert->link = $request->link;
             $insert->photo = $photo_name;
             $insert->save();
-            return redirect(route('backend.whyUs.index'))->with('success', 'Data successfully Uploaded!');
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\WhyUs  $whyUs
-     * @return \Illuminate\Http\Response
-     */
-    public function show(WhyUs $whyUs)
-    {
-        //
+            return redirect(route('backend.whyus.index'))->with("success", "Data Insert Successfull!");
+        };
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\WhyUs  $whyUs
+     * @param  \App\Models\Whyus  $whyus
      * @return \Illuminate\Http\Response
      */
-    public function edit(WhyUs $whyUs)
+    public function edit(Whyus $whyus)
     {
-        return view('backend.services.whyUs.edit', compact('whyUs'));
+        $datas = Whyus::all();
+        return view('backend.services.whyus.edit', compact('whyus'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\WhyUs  $whyUs
+     * @param  \App\Models\Whyus  $whyus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, WhyUs $whyUs)
+    public function update(Request $request, Whyus $whyus)
     {
         $this->validate($request,[
-            'title' => 'required',
-            'photo' => 'mimes:jpeg,jpg,png,gif|required|max:1024',
+            'title' => "required",
+            "photo" => "required|mimes:png,jpg,gif,jpeg,webp|max:1024"
         ]);
-        $photo = $request->file('photo');
 
+        $photo = $request->file('photo');
         if(!empty($photo)){
             $photo_name = Str::slug($request->title)."_".time(). ".".$photo->getClientOriginalExtension();
             $photo->move(public_path("/storage/whyus/"),$photo_name);
-            $paths = public_path('storage/whyus/'.$whyUs->photo);
-            if(file_exists($paths)){
-                unlink($paths);
+            $path = public_path('storage/whyus/'.$whyus->photo);
+            if(file_exists($path)){
+                unlink($path);
+            }else{
+                $photo_name = $whyus->photo;
             }
-    }else{
-            $photo_name = $whyUs->photo;
+
+            $whyus->title = $request->title;
+            $whyus->description = $request->description;
+            $whyus->icon = $request->icon;
+            $whyus->title2 = $request->title2;
+            $whyus->description2 = $request->description2;
+            $whyus->icon2 = $request->icon2;
+            $whyus->link = $request->link;
+            $whyus->photo = $photo_name;
+            $whyus->save();
+            return back()->with('success', 'Data successfully Updated!!!');
+
         }
-        $whyUs->title = $request->title;
-        $whyUs->description = $request->description;
-        $whyUs->icon = $request->icon;
-        $whyUs->link = $request->link;
-        $whyUs->photo = $photo_name;
-        $whyUs->save();
-        return back()->with('success', 'Data successfully updated!!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\WhyUs  $whyUs
+     * @param  \App\Models\Whyus  $whyus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WhyUs $whyUs)
+    public function destroy(Whyus $whyus)
     {
-        $whyUs->delete();
-        $whyUs->status = 2;
-        $whyUs->save();
-        return back()->with('success', 'Data successfully deleted!!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\WhyUs  $whyUs
-     * @return \Illuminate\Http\Response
-     */
-    public function status(WhyUs $whyUs)
-    {
-        if($whyUs->status == 1){
-            $whyUs->status = 2;
-            $whyUs->save();
-        }else{
-           $whyUs->status = 1;
-           $whyUs->save();
-        }
-        return back()->with('success', 'Status Updated!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function restore($id)
-    {
-        $data = WhyUs::onlyTrashed()->where('id', $id)->first();
-        $data->status = 1;
-        $data->save();
-        $data->restore();
-        return back()->with('success', 'Data successfully restored');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function hardDelete($id)
-    {
-        $data = WhyUs::withTrashed()->find($id);
-        $path = public_path('storage/whyus/'.$data->photo);
-        if(file_exists($path)){
-            unlink($path);
-        }
-        $data -> forceDelete();
-        return back()->with('success', 'Data full Delete');
+        $whyus->delete();
+        $whyus->save();
+        return back()->with('success', "Data successfully deleted!");
     }
 }

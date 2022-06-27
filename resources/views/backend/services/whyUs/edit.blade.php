@@ -1,6 +1,5 @@
 @extends('layouts.backendapp')
-@section('title', 'Why Us Service | ')
-
+@section('title', 'Edit | ')
 @section('content')
     <section>
         <div class="container">
@@ -8,21 +7,28 @@
                 <div class="col-md-12 ">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>why us Edit <a href="{{ route('backend.whyUs.index') }}" class="btn btn-primary btn-sm">All why us</a></h2>
+                            <h2>Edit <a href="{{ route('backend.whyus.index') }}" class="btn btn-primary btn-sm">Back</a></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                             <br>
-                            <form action="{{ route('backend.whyUs.update', $whyUs->id ) }}" method="POST" enctype="multipart/form-data"
+                            <form action="{{ route('backend.whyus.update', $whyus->id) }}" method="POST" enctype="multipart/form-data"
                                 class="form-horizontal form-label-left">
                                 @csrf
                                 @method("PUT")
 
                                 <div class="form-group row ">
-                                    <label class="control-label col-md-3 col-sm-3 ">Title:</label>
+                                    <label class="control-label col-md-3 col-sm-3 ">Title:
+                                    </label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Title"
-                                            name="title" value="{{$whyUs->title}}">
+                                            name="title" value="{{$whyus->title}}">
                                     </div>
                                 </div>
 
@@ -31,15 +37,7 @@
                                             class="required"></span>
                                     </label>
                                     <div class="col-md-9 col-sm-9 ">
-                                        <textarea class="form-control" rows="3" placeholder="Description" name="description">{{$whyUs->description}}</textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row ">
-                                    <label class="control-label col-md-3 col-sm-3 ">Link:</label>
-                                    <div class="col-md-9 col-sm-9 ">
-                                        <input type="text" class="form-control" placeholder="Link"
-                                            name="link" value="{{$whyUs->link}}">
+                                        <textarea class="form-control" rows="3" placeholder="Description" name="description">{{$whyus->description}}</textarea>
                                     </div>
                                 </div>
 
@@ -47,17 +45,50 @@
                                     <label class="control-label col-md-3 col-sm-3 ">Icon:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Icon"
-                                            name="icon" value="{{$whyUs->icon}}">
+                                            name="icon" value="{{$whyus->icon}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row ">
+                                    <label class="control-label col-md-3 col-sm-3 ">Title2:</label>
+                                    <div class="col-md-9 col-sm-9 ">
+                                        <input type="text" class="form-control" placeholder="Title2"
+                                            name="title2" value="{{$whyus->title2}}">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="control-label col-md-3 col-sm-3 ">Image:<span
+                                    <label class="control-label col-md-3 col-sm-3 ">Description2:<span
+                                            class="required"></span>
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 ">
+                                        <textarea class="form-control" rows="3" placeholder="Description2" name="description">{{$whyus->description2}}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row ">
+                                    <label class="control-label col-md-3 col-sm-3 ">Icon2:</label>
+                                    <div class="col-md-9 col-sm-9 ">
+                                        <input type="text" class="form-control" placeholder="Icon"
+                                            name="icon2" value="{{$whyus->icon2}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row ">
+                                    <label class="control-label col-md-3 col-sm-3 ">Link:</label>
+                                    <div class="col-md-9 col-sm-9 ">
+                                        <input type="text" class="form-control" placeholder="Link"
+                                            name="link" value="{{$whyus->link}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="control-label col-md-3 col-sm-3 ">Image<span
                                             class="required"></span>
                                     </label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type='file' class="form-control" name="photo">
-                                        <img width="100" class='mt-3' src="{{ asset('storage/whyus/' . $whyUs->photo) }}" alt="">
+                                        <img width="100" class='mt-3' src="{{ asset('storage/whyus/' . $whyus->photo) }}" alt="">
                                     </div>
                                 </div>
                                     <div class="ln_solid"></div>
@@ -75,8 +106,9 @@
     </section>
 
     @if (session('success'))
-        <div class="toast show" style="position: absolute; top: 0; right: 0;" data-delay="10000">
+        <div class="toast" style="position: absolute; top: 0; right: 0;" data-delay="10000">
             <div class="toast-header">
+                <img src="..." class="rounded mr-2" alt="...">
                 <strong class="mr-auto">{{ config('app.name') }}</strong>
                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -90,7 +122,8 @@
 
 @endsection
 
-
 @section('backend_js')
-    $('.toast').toast('show');
+    <script>
+        $('.toast').toast('show');
+    </script>
 @endsection

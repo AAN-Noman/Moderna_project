@@ -35,3 +35,16 @@ return new class extends Migration
         Schema::dropIfExists('services');
     }
 };
+
+            // $table->id();
+            // $table->string('title');
+            // $table->string('title2');
+            // $table->longText('description');
+            // $table->longText('description2');
+            // $table->string('icon');
+            // $table->string('icon2');
+            // $table->string('link');
+            // $table->text('photo');
+            // $table->integer('status')->default(1);
+            // $table->softDeletes();
+            // $table->timestamps();
