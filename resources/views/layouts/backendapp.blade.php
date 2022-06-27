@@ -83,6 +83,14 @@
                         <a class="collapse-item" href="{{ route('backend.ironman.create') }}">Add WhyUs</a>
                     </div>
                 </div>
+
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Service Details:</h6>
+                        <a class="collapse-item" href="{{ route('backend.batman.index') }}">All Service Details</a>
+                        <a class="collapse-item" href="{{ route('backend.batman.create') }}">Add Service Details</a>
+                    </div>
+                </div>
             </li>
 
 

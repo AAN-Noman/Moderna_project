@@ -9,4 +9,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Ironman extends Model
 {
     use HasFactory, SoftDeletes;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'title',
+        'description',
+        'link',
+        'photo'
+    ];
 }
