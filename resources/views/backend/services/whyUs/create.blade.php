@@ -8,7 +8,7 @@
                 <div class="col-md-12 ">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Add Why Us<a href="{{ route('backend.whyus.index') }}" class="btn btn-primary btn-sm">All
+                            <h2>Add Why Us <a href="{{ route('backend.ironman.index') }}" class="btn btn-primary btn-sm">All
                                     Why Us</a></h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -20,7 +20,7 @@
                         </div>
                         <div class="x_content">
                             <br />
-                            <form action="{{ route('backend.whyus.store') }}" method="POST" enctype="multipart/form-data"
+                            <form action="{{ route('backend.ironman.store') }}" method="POST" enctype="multipart/form-data"
                                 class="form-horizontal form-label-left">
                                 @csrf
                                 <div class="form-group row ">

@@ -13,15 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('ironmen', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longText('description');
-            $table->string('iconColor');
-            $table->string('icon');
+            $table->string('title')->nullable();
+            $table->string('title2')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('description2')->nullable();
+            $table->string('icon')->nullable();
+            $table->string('icon2')->nullable();
+            $table->string('link')->nullable();
+            $table->text('photo')->nullable();
             $table->integer('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
+
         });
     }
 
@@ -32,8 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('ironmen');
     }
 };
-
-            

@@ -8,7 +8,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>All Data </h2>
+                            <h2>All Data <a href="{{ route('backend.ironman.create') }}" class='btn btn-primary btn-sm'>Add</a></h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -50,21 +50,73 @@
                                             <td>{{ $data->icon2 }}</td>
                                             <td>{{ $data->link }}</td>
                                             <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
-                                            <td class="last">
-                                                {{-- <a href="{{ route('backend.whyus.status', $data->id) }}"
+                                            <td class="last inline">
+                                                <a href="{{ route('backend.ironman.status', $data->id) }}"
                                                     class="btn btn-{{ $data->status == 1 ? 'warning' : 'success' }} btn-sm">
                                                     {{ $data->status == 1 ? 'Deactive' : 'Active' }}
-                                                </a> --}}
-                                                <a href="{{ route('backend.whyus.edit', $data->id) }}"
+                                                </a>
+                                                <a href="{{ route('backend.ironman.edit', $data->id) }}"
                                                     class="btn btn-primary btn-sm">View/Edit</a>
                                                 <form class='d-inline'
-                                                    action="{{ route('backend.whyus.destroy', $data->id) }}"
+                                                    action="{{ route('backend.ironman.destroy', $data->id) }}"
                                                     method='POST'>
                                                     @csrf
                                                     @method("DELETE")
                                                     <button type="submit" class="btn btn-danger btn-sm">Delete </button>
                                                 </form>
                                             </td>
+                                        </tr>
+                                    @empty
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Restore</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                    <tr class="headings">
+                                        <th class='colume-title'>Id</th>
+                                        <th class='colume-title'>Image</th>
+                                        <th class='colume-title'>Title</th>
+                                        <th class='colume-title'>Description</th>
+                                        <th class='colume-title'>Icon</th>
+                                        <th class='colume-title'>Title2</th>
+                                        <th class='colume-title'>Description2</th>
+                                        <th class='colume-title'>Icon2</th>
+                                        <th class='colume-title'>Link</th>
+                                        <th class='colume-title'>Status</th>
+                                        <th class='colume-title'>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($DataTranshed as $data)
+                                        <tr class="even pointer">
+                                            <td>{{ $data->id }}</td>
+                                            <td>
+                                                <img width="100" src="{{ asset('storage/whyus/' . $data->photo) }}"
+                                                    alt="">
+                                            </td>
+                                            <td>{{ $data->title }}</td>
+                                            <td>{{ Str::limit($data->description, 25, '...') }}</td>
+                                            <td>{{ $data->icon }}</td>
+                                            <td>{{ $data->title2 }}</td>
+                                            <td>{{ Str::limit($data->description2, 25, '...') }}</td>
+                                            <td>{{ $data->icon2 }}</td>
+                                            <td>{{ $data->link }}</td>
+                                            <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                            <td class="last inline-block">
+                                                <a href="{{ route('backend.ironman.restore', $data->id) }}"
+                                                    class="btn btn-primary btn-sm">Restore</a>
+
+                                                <button id="delete" value="{{ route('backend.ironman.hardDelete', $data->id) }}" class="btn btn-danger btn-sm">Hard Delete</button>
                                         </tr>
                                     @empty
                                     @endforelse

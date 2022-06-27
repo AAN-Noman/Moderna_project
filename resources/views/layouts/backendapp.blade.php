@@ -79,8 +79,8 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Why Us:</h6>
-                        <a class="collapse-item" href="{{ route('backend.whyus.index') }}">All WhyUs</a>
-                        <a class="collapse-item" href="{{ route('backend.whyus.create') }}">Add WhyUs</a>
+                        <a class="collapse-item" href="{{ route('backend.ironman.index') }}">All WhyUs</a>
+                        <a class="collapse-item" href="{{ route('backend.ironman.create') }}">Add WhyUs</a>
                     </div>
                 </div>
             </li>
