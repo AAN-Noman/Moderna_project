@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\BannerController;
-use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\BatmanController;
+use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\IronmanController;
+use App\Http\Controllers\Backend\PricingController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Frontend\FrontendController;
 
@@ -54,10 +55,16 @@ Route::name("backend.")->group(function(){
     Route::get('/ironman/hard/Delete/{id}', [IronmanController::class, 'hardDelete'])->name('ironman.hardDelete');
 
     //Service Details
-
     Route::resource('/batman', BatmanController::class)->except(["show"]);
     Route::get('/batman/status/{batman}', [BatmanController::class, 'status'])->name('batman.status');
     Route::get('/batman/restore/{id}', [BatmanController::class, 'restore'])->name('batman.restore');
     Route::get('/batman/hard/Delete/{id}', [BatmanController::class, 'hardDelete'])->name('batman.hardDelete');
+
+    //Pricing
+    Route::resource('/price', PricingController::class)->except(["show"]);
+    Route::get('/price/status/{pricing}', [PricingController::class, 'status'])->name('price.status');
+    Route::get('/price/restore/{id}', [PricingController::class, 'restore'])->name('price.restore');
+    Route::get('/price/hard/Delete/{id}', [PricingController::class, 'hardDelete'])->name('price.hardDelete');
+
 
 });
