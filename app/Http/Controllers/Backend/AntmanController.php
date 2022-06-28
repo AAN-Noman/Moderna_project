@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pricing;
+use App\Models\Antman;
 use Illuminate\Http\Request;
 
-class PricingController extends Controller
+class AntmanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class PricingController extends Controller
      */
     public function index()
     {
-        $DataTranshed = Pricing::onlyTrashed()->get();
-        $datas = Pricing::all();
+        $DataTranshed = Antman::onlyTrashed()->get();
+        $datas = Antman::all();
         return view('backend.services.pricing.index', compact('datas', 'DataTranshed'));
     }
 
@@ -41,7 +41,7 @@ class PricingController extends Controller
         $this->validate($request,[
             'title' => "required",
         ]);
-        $insert = new Pricing();
+        $insert = new Antman();
         $insert->title = $request->title;
         $insert->price = $request->price;
         $insert->title2 = $request->title2;
@@ -52,84 +52,84 @@ class PricingController extends Controller
         $insert->line5 = $request->line5;
         $insert->link = $request->link;
         $insert->save();
-        return redirect(route('backend.price.index'))->with("success", "Data Insert Successfull!");
+        return redirect(route('backend.antman.index'))->with("success", "Data Insert Successfull!");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pricing  $pricing
+     * @param  \App\Models\Antman  $antman
      * @return \Illuminate\Http\Response
      */
-    public function show(Pricing $pricing)
+    public function show(Antman $antman)
     {
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pricing  $pricing
+     * @param  \App\Models\Antman  $antman
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pricing $pricing)
+    public function edit(Antman $antman)
     {
-        return view('backend.services.pricing.edit', compact('pricing'));
+        return view('backend.services.pricing.edit', compact('antman'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pricing  $pricing
+     * @param  \App\Models\Antman  $antman
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pricing $pricing)
+    public function update(Request $request, Antman $antman)
     {
         $this->validate($request,[
             'title' => "required",
         ]);
-        $pricing->title = $request->title;
-        $pricing->price = $request->price;
-        $pricing->title2 = $request->title2;
-        $pricing->line = $request->line;
-        $pricing->line2 = $request->line2;
-        $pricing->line3 = $request->line3;
-        $pricing->line4 = $request->line4;
-        $pricing->line5 = $request->line5;
-        $pricing->link = $request->link;
-        $pricing->save();
+        $antman->title = $request->title;
+        $antman->price = $request->price;
+        $antman->title2 = $request->title2;
+        $antman->line = $request->line;
+        $antman->line2 = $request->line2;
+        $antman->line3 = $request->line3;
+        $antman->line4 = $request->line4;
+        $antman->line5 = $request->line5;
+        $antman->link = $request->link;
+        $antman->save();
         return back()->with('success', 'Data successfully Updated!!!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pricing  $pricing
+     * @param  \App\Models\Antman  $antman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pricing $pricing)
+    public function destroy(Antman $antman)
     {
-        $pricing->delete();
-        $pricing->status = 2;
-        $pricing->save();
+        $antman->delete();
+        $antman->status = 2;
+        $antman->save();
         return back()->with('success', "Data successfully deleted!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pricing  $pricing
+     * @param  \App\Models\Antman  $antman
      * @return \Illuminate\Http\Response
      */
-    public function status(Pricing $pricing)
+    public function status(Antman $antman)
     {
-        if($pricing->status == 1){
-            $pricing->status = 2;
-            $pricing->save();
+        if($antman->status == 1){
+            $antman->status = 2;
+            $antman->save();
         }else{
-           $pricing->status = 1;
-           $pricing->save();
+           $antman->status = 1;
+           $antman->save();
         }
         return back()->with('success', 'Status Updated!');
     }
@@ -141,7 +141,7 @@ class PricingController extends Controller
      */
     public function restore($id)
     {
-        $data = Pricing::onlyTrashed()->where('id', $id)->first();
+        $data = Antman::onlyTrashed()->where('id', $id)->first();
         $data->status = 1;
         $data->save();
         $data->restore();
@@ -155,7 +155,7 @@ class PricingController extends Controller
      */
     public function hardDelete($id)
     {
-        $data = Pricing::withTrashed()->find($id);
+        $data = Antman::withTrashed()->find($id);
         $data -> forceDelete();
         return back()->with('success', 'Data full Delete');
     }

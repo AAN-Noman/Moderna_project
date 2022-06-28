@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>All Pricing <a href="{{ route('backend.price.create') }}" class='btn btn-primary btn-sm'>Add Pricing</a> </h2>
+                        <h2>All Pricing <a href="{{ route('backend.antman.create') }}" class='btn btn-primary btn-sm'>Add Pricing</a> </h2>
                         <div class="clearfix"></div>
                     </div>
                     <div class="table-responsive">
@@ -43,14 +43,14 @@
                                         <td>{{ Str::limit($data->link, 10, '...') }}</td>
                                         <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
                                         <td class="last">
-                                            <a href="{{ route('backend.price.status', $data->id) }}"
+                                            <a href="{{ route('backend.antman.status', $data->id) }}"
                                                 class="btn btn-{{ $data->status == 1 ? 'warning' : 'success' }} btn-sm">
                                                 {{ $data->status == 1 ? 'Deactive' : 'Active' }}
                                             </a>
-                                            <a href="{{ route('backend.price.edit', $data->id) }}"
+                                            <a href="{{ route('backend.antman.edit', $data->id) }}"
                                                 class="btn btn-primary btn-sm">View/Edit</a>
                                             <form class='d-inline'
-                                                action="{{ route('backend.price.destroy', $data->id) }}" method='POST'>
+                                                action="{{ route('backend.antman.destroy', $data->id) }}" method='POST'>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm">Delete </button>
@@ -104,10 +104,10 @@
                                         <td>{{ Str::limit($data->link, 10, '...') }}</td>
                                         <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
                                         <td class="last">
-                                            <a href="{{ route('backend.price.restore', $data->id) }}"
+                                            <a href="{{ route('backend.antman.restore', $data->id) }}"
                                                 class="btn btn-primary btn-sm">Restore</a>
 
-                                            <button id="delete" value="{{ route('backend.price.hardDelete', $data->id) }}" class="btn btn-danger btn-sm">Hard Delete</button>
+                                            <button id="delete" value="{{ route('backend.antman.hardDelete', $data->id) }}" class="btn btn-danger btn-sm">Hard Delete</button>
                                     </tr>
                                 @empty
                                 @endforelse

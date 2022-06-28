@@ -95,8 +95,8 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Service Details:</h6>
-                        <a class="collapse-item" href="{{ route('backend.price.index') }}">All Pricing</a>
-                        <a class="collapse-item" href="{{ route('backend.price.create') }}">Add Pricing</a>
+                        <a class="collapse-item" href="{{ route('backend.antman.index') }}">All Pricing</a>
+                        <a class="collapse-item" href="{{ route('backend.antman.create') }}">Add Pricing</a>
                     </div>
                 </div>
             </li>

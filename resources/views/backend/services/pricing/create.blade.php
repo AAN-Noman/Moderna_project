@@ -8,13 +8,13 @@
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Add Pricing <a href="{{ route('backend.price.index') }}" class="btn btn-primary btn-sm">All
+                            <h2>Add Pricing <a href="{{ route('backend.antman.index') }}" class="btn btn-primary btn-sm">All
                                     Pricing</a></h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                             <br />
-                            <form action="{{ route('backend.price.store') }}" method="POST"
+                            <form action="{{ route('backend.antman.store') }}" method="POST"
                                 enctype="multipart/form-data" class="form-horizontal form-label-left">
                                 @csrf
                                 <div class="form-group row ">

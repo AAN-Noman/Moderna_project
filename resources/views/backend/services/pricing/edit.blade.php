@@ -8,12 +8,12 @@
                 <div class="col-md-12 ">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Pricing Edit <a href="{{ route('backend.price.index') }}" class="btn btn-primary btn-sm">All Pricing</a></h2>
+                            <h2>Pricing Edit <a href="{{ route('backend.antman.index') }}" class="btn btn-primary btn-sm">All Pricing</a></h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                             <br>
-                            <form action="{{ route('backend.price.update', $pricing->id ) }}" method="POST" enctype="multipart/form-data"
+                            <form action="{{ route('backend.antman.update', $antman->id ) }}" method="POST" enctype="multipart/form-data"
                                 class="form-horizontal form-label-left">
                                 @csrf
                                 @method("PUT")
@@ -22,7 +22,7 @@
                                     <label class="control-label col-md-3 col-sm-3 ">Title:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Title"
-                                            name="title" value="{{$pricing->title}}">
+                                            name="title" value="{{$antman->title}}">
                                     </div>
                                 </div>
 
@@ -30,7 +30,7 @@
                                     <label class="control-label col-md-3 col-sm-3 ">Price:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Price"
-                                            name="price" value="{{$pricing->price}}">
+                                            name="price" value="{{$antman->price}}">
                                     </div>
                                 </div>
 
@@ -38,7 +38,7 @@
                                     <label class="control-label col-md-3 col-sm-3 ">Title2:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Title2"
-                                            name="title2" value="{{$pricing->title2}}">
+                                            name="title2" value="{{$antman->title2}}">
                                     </div>
                                 </div>
 
@@ -46,7 +46,7 @@
                                     <label class="control-label col-md-3 col-sm-3 ">Line:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Line"
-                                            name="line" value="{{$pricing->line}}">
+                                            name="line" value="{{$antman->line}}">
                                     </div>
                                 </div>
 
@@ -54,7 +54,7 @@
                                     <label class="control-label col-md-3 col-sm-3 ">Line2:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Line2"
-                                            name="line2" value="{{$pricing->line2}}">
+                                            name="line2" value="{{$antman->line2}}">
                                     </div>
                                 </div>
 
@@ -62,14 +62,14 @@
                                     <label class="control-label col-md-3 col-sm-3 ">Line3:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Line3"
-                                            name="line3" value="{{$pricing->line3}}">
+                                            name="line3" value="{{$antman->line3}}">
                                     </div>
                                 </div>
                                 <div class="form-group row ">
                                     <label class="control-label col-md-3 col-sm-3 ">Line4:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Line4"
-                                            name="line4" value="{{$pricing->line4}}">
+                                            name="line4" value="{{$antman->line4}}">
                                     </div>
                                 </div>
 
@@ -77,7 +77,7 @@
                                     <label class="control-label col-md-3 col-sm-3 ">Line5:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Line5"
-                                            name="line5" value="{{$pricing->line5}}">
+                                            name="line5" value="{{$antman->line5}}">
                                     </div>
                                 </div>
 
@@ -85,7 +85,7 @@
                                     <label class="control-label col-md-3 col-sm-3 ">Link:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="Link"
-                                            name="link" value="{{$pricing->link}}">
+                                            name="link" value="{{$antman->link}}">
                                     </div>
                                 </div>
 

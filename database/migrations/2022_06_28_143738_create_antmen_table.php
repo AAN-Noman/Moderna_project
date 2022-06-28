@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pricings', function (Blueprint $table) {
+        Schema::create('antmen', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
             $table->integer('price')->nullable();
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pricings');
+        Schema::dropIfExists('antmen');
     }
 };

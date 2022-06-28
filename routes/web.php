@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\AntmanController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BatmanController;
 use App\Http\Controllers\Backend\BackendController;
@@ -61,10 +62,10 @@ Route::name("backend.")->group(function(){
     Route::get('/batman/hard/Delete/{id}', [BatmanController::class, 'hardDelete'])->name('batman.hardDelete');
 
     //Pricing
-    Route::resource('/price', PricingController::class)->except(["show"]);
-    Route::get('/price/status/{pricing}', [PricingController::class, 'status'])->name('price.status');
-    Route::get('/price/restore/{id}', [PricingController::class, 'restore'])->name('price.restore');
-    Route::get('/price/hard/Delete/{id}', [PricingController::class, 'hardDelete'])->name('price.hardDelete');
+    Route::resource('/antman', AntmanController::class)->except(["show"]);
+    Route::get('/antman/status/{antman}', [AntmanController::class, 'status'])->name('antman.status');
+    Route::get('/antman/restore/{id}', [AntmanController::class, 'restore'])->name('antman.restore');
+    Route::get('/antman/hard/Delete/{id}', [AntmanController::class, 'hardDelete'])->name('antman.hardDelete');
 
 
 });
