@@ -6,7 +6,7 @@
      <!-- ======= Our Portfolio Section ======= -->
      <section class="breadcrumbs">
         <div class="container">
-  
+
           <div class="d-flex justify-content-between align-items-center">
             <h2>Our Portfolio</h2>
             <ol>
@@ -14,14 +14,14 @@
               <li>Our Portfolio</li>
             </ol>
           </div>
-  
+
         </div>
       </section><!-- End Our Portfolio Section -->
-  
+
       <!-- ======= Portfolio Section ======= -->
       <section class="portfolio">
         <div class="container">
-  
+
           <div class="row">
             <div class="col-lg-12">
               <ul id="portfolio-flters">
@@ -32,9 +32,9 @@
               </ul>
             </div>
           </div>
-  
+
           <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-  
+
             <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
               <div class="portfolio-item">
                 <img src="{{ asset('frontend/img/portfolio/portfolio-1.jpg')}}" class="img-fluid" alt="">
@@ -47,7 +47,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="col-lg-4 col-md-6 portfolio-wrap filter-web">
               <div class="portfolio-item">
                 <img src="{{ asset('frontend/img/portfolio/portfolio-2.jpg')}}" class="img-fluid" alt="">
@@ -60,7 +60,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
               <div class="portfolio-item">
                 <img src="{{ asset('frontend/img/portfolio/portfolio-3.jpg')}}" class="img-fluid" alt="">
@@ -73,7 +73,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="col-lg-4 col-md-6 portfolio-wrap filter-card">
               <div class="portfolio-item">
                 <img src="{{ asset('frontend/img/portfolio/portfolio-4.jpg')}}" class="img-fluid" alt="">
@@ -86,7 +86,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="col-lg-4 col-md-6 portfolio-wrap filter-web">
               <div class="portfolio-item">
                 <img src="{{ asset('frontend/img/portfolio/portfolio-5.jpg')}}" class="img-fluid" alt="">
@@ -99,7 +99,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
               <div class="portfolio-item">
                 <img src="{{ asset('frontend/img/portfolio/portfolio-6.jpg')}}" class="img-fluid" alt="">
@@ -112,7 +112,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="col-lg-4 col-md-6 portfolio-wrap filter-card">
               <div class="portfolio-item">
                 <img src="{{ asset('frontend/img/portfolio/portfolio-7.jpg')}}" class="img-fluid" alt="">
@@ -125,7 +125,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="col-lg-4 col-md-6 portfolio-wrap filter-card">
               <div class="portfolio-item">
                 <img src="{{ asset('frontend/img/portfolio/portfolio-8.jpg')}}" class="img-fluid" alt="">
@@ -138,7 +138,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="col-lg-4 col-md-6 portfolio-wrap filter-web">
               <div class="portfolio-item">
                 <img src="{{ asset('frontend/img/portfolio/portfolio-9.jpg')}}" class="img-fluid" alt="">
@@ -151,14 +151,15 @@
                 </div>
               </div>
             </div>
-  
+
           </div>
-  
+
         </div>
       </section><!-- End Portfolio Section -->
 
 </main><!-- End #main -->
 @endsection
-@section('protfolio')
+
+@section('portfolio')
     class='active'
 @endsection

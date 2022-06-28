@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\PriceController;
 use App\Http\Controllers\Backend\AntmanController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BatmanController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\IronmanController;
-use App\Http\Controllers\Backend\PricingController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Frontend\FrontendController;
 
@@ -66,6 +66,12 @@ Route::name("backend.")->group(function(){
     Route::get('/antman/status/{antman}', [AntmanController::class, 'status'])->name('antman.status');
     Route::get('/antman/restore/{id}', [AntmanController::class, 'restore'])->name('antman.restore');
     Route::get('/antman/hard/Delete/{id}', [AntmanController::class, 'hardDelete'])->name('antman.hardDelete');
+
+    // priceing hadeline
+    Route::resource('/price', PriceController::class)->except(["show"]);
+    Route::get('/price/status/{price}', [PriceController::class, 'status'])->name('price.status');
+    Route::get('/price/restore/{id}', [PriceController::class, 'restore'])->name('price.restore');
+    Route::get('/price/hard/Delete/{id}', [PriceController::class, 'hardDelete'])->name('price.hardDelete');
 
 
 });
