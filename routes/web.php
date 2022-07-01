@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AboutController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\PriceController;
@@ -72,6 +73,12 @@ Route::name("backend.")->group(function(){
     Route::get('/price/status/{price}', [PriceController::class, 'status'])->name('price.status');
     Route::get('/price/restore/{id}', [PriceController::class, 'restore'])->name('price.restore');
     Route::get('/price/hard/Delete/{id}', [PriceController::class, 'hardDelete'])->name('price.hardDelete');
+
+    // About wiht Facts Section
+    Route::resource('/about', AboutController::class)->except(["show"]);
+    Route::get('/about/status/{about}', [AboutController::class, 'status'])->name('about.status');
+    Route::get('/about/restore/{id}', [AboutController::class, 'restore'])->name('about.restore');
+    Route::get('/about/hard/Delete/{id}', [AboutController::class, 'hardDelete'])->name('about.hardDelete');
 
 
 });
