@@ -129,7 +129,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tetstimonial:</h6>
                         <a class="collapse-item" href="{{ route('backend.tetstimonial.index') }}">Tetstimonial of Headline</a>
-                        <a class="collapse-item" href="{{ route('backend.worker.index') }}">All Tetstimonial</a>
+                        <a class="collapse-item" href="{{ route('backend.work.index') }}">All Tetstimonial</a>
                     </div>
                 </div>
             </li>

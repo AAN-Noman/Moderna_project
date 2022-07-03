@@ -8,12 +8,12 @@
                 <div class="col-md-12 ">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Edit <a href="{{ route('backend.worker.index') }}" class="btn btn-primary btn-sm">Back</a></h2>
+                            <h2>Edit <a href="{{ route('backend.work.index') }}" class="btn btn-primary btn-sm">Back</a></h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                             <br>
-                            <form action="{{ route('backend.worker.update', $worker->id ) }}" method="POST" enctype="multipart/form-data"
+                            <form action="{{ route('backend.work.update', $worker->id ) }}" method="POST" enctype="multipart/form-data"
                                 class="form-horizontal form-label-left">
                                 @csrf
                                 @method("PUT")

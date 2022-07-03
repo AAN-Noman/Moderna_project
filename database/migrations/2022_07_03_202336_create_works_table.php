@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tetstimonials', function (Blueprint $table) {
+        Schema::create('works', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->string('name');
+            $table->string('proportion')->nullable();
             $table->longText('description')->nullable();
+            $table->text('image');
             $table->integer('status')->default(1);
             $table->softDeletes();
             $table->timestamps();
@@ -30,7 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tetstimonials');
+        Schema::dropIfExists('works');
     }
 };
-

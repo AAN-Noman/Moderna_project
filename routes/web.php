@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\WorkController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\PriceController;
 use App\Http\Controllers\Backend\SkillController;
 use App\Http\Controllers\Backend\AntmanController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BatmanController;
-use App\Http\Controllers\Backend\WorkerController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\IronmanController;
 use App\Http\Controllers\Backend\ServiceController;
@@ -104,10 +104,10 @@ Route::name("backend.")->group(function(){
 
 
     //About Tetstimonial Section
-    Route::resource('/worker', WorkerController::class)->except(["show"]);
-    Route::get('/worker/status/{worker}', [WorkerController::class, 'status'])->name('worker.status');
-    Route::get('/worker/restore/{id}', [WorkerController::class, 'restore'])->name('worker.restore');
-    Route::get('/worker/hard/Delete/{id}', [WorkerController::class, 'hardDelete'])->name('worker.hardDelete');
+    Route::resource('/work', WorkController::class)->except(["show"]);
+    Route::get('/work/status/{work}', [WorkController::class, 'status'])->name('work.status');
+    Route::get('/work/restore/{id}', [WorkController::class, 'restore'])->name('work.restore');
+    Route::get('/work/hard/Delete/{id}', [WorkController::class, 'hardDelete'])->name('work.hardDelete');
 
 
 });

@@ -13,7 +13,7 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="{{ route('backend.worker.store')}}" method="POST"
+                        <form action="{{ route('backend.work.store')}}" method="POST"
                             class="form-horizontal form-label-left">
                             @csrf
                             <div class="form-group row ">
@@ -106,12 +106,12 @@
                                         <td>{{ $data->description }}</td>
                                         <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
                                         <td class="last">
-                                            <a href="{{ route('backend.worker.status', $data->id) }}"
+                                            <a href="{{ route('backend.work.status', $data->id) }}"
                                                 class="btn btn-{{ $data->status == 1 ? 'warning' : 'success' }} btn-sm">
                                                 {{ $data->status == 1 ? 'Deactive' : 'Active' }}
                                             </a>
                                             <form class='d-inline'
-                                                action="{{ route('backend.worker.destroy', $data->id) }}" method='POST'>
+                                                action="{{ route('backend.work.destroy', $data->id) }}" method='POST'>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm">Delete </button>
@@ -158,10 +158,10 @@
                                         <td>{{ $data->description }}</td>
                                         <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
                                         <td class="last">
-                                            <a href="{{ route('backend.worker.restore', $data->id) }}"
+                                            <a href="{{ route('backend.work.restore', $data->id) }}"
                                                 class="btn btn-primary btn-sm">Restore</a>
 
-                                            <button id="delete" value="{{ route('backend.worker.hardDelete', $data->id) }}" class="btn btn-danger btn-sm">Hard Delete</button>
+                                            <button id="delete" value="{{ route('backend.work.hardDelete', $data->id) }}" class="btn btn-danger btn-sm">Hard Delete</button>
                                     </tr>
                                 @empty
                                 @endforelse

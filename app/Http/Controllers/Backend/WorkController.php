@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Worker;
+use App\Models\Work;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class WorkerController extends Controller
+class WorkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        $DataTranshed = Worker::onlyTrashed()->get();
-        $datas = Worker::all();
+        $DataTranshed = Work::onlyTrashed()->get();
+        $datas = Work::all();
         return view('backend.about.Tetstimonial.worker.index', compact('datas', 'DataTranshed'));
     }
 
@@ -44,27 +44,27 @@ class WorkerController extends Controller
             "image" => 'required|mimes:jpeg,jpg,png,bmp,gif,svg|min:1024',
         ]);
 
-        $photo = $request->file('photo');
+        $photo = $request->file('image');
         $photo_name = Str::slug($request->name)."_".time().".".$photo->getClientOriginalExtension();
         $uploads_photo = $photo->move(public_path("/storage/worker/"),$photo_name);
         if($uploads_photo){
-            $insert = New Worker();
+            $insert = New Work();
             $insert->name = $request->name;
             $insert->proportion = $request->proportion;
             $insert->description = $request->description;
             $insert->photo = $photo_name;
             $insert->save();
-            return redirect(route('backend.worker.index'))->with('success', 'Data successfully Uploaded!');
+            return redirect(route('backend.work.index'))->with('success', 'Data successfully Uploaded!');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Worker  $worker
+     * @param  \App\Models\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function show(Worker $worker)
+    public function show(Work $work)
     {
         //
     }
@@ -72,76 +72,76 @@ class WorkerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Worker  $worker
+     * @param  \App\Models\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function edit(Worker $worker)
+    public function edit(Work $work)
     {
-        return view('backend.about.Tetstimonial.worker.edit', compact('worker'));
+        return view('backend.about.Tetstimonial.worker.edit', compact('work'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Worker  $worker
+     * @param  \App\Models\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Worker $worker)
+    public function update(Request $request, Work $work)
     {
         $this->validate($request,[
             'name' => 'required',
             'image' => 'required | mimes:jpeg,jpg,png | max:1000',
 
         ]);
-        $photo = $request->file('photo');
+        $photo = $request->file('image');
 
         if(!empty($photo)){
                 $photo_name = Str::slug($request->name)."_".time(). ".".$photo->getClientOriginalExtension();
                 $uploads_photo = $photo->move(public_path("/storage/worker/"),$photo_name);
-                $path = public_path('storage/banner/'.$worker->photo);
+                $path = public_path('storage/banner/'.$work->photo);
                 if(file_exists($path)){
                     unlink($path);
                 }
         }else{
-            $photo_name = $worker->photo;
+            $photo_name = $work->photo;
         }
-        $worker->name = $request->name;
-        $worker->proportion = $request->proportion;
-        $worker->description = $request->description;
-        $worker->photo = $photo_name;
-        $worker->save();
+        $work->name = $request->name;
+        $work->proportion = $request->proportion;
+        $work->description = $request->description;
+        $work->photo = $photo_name;
+        $work->save();
         return back()->with('success', 'Data successfully updated!!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Worker  $worker
+     * @param  \App\Models\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Worker $worker)
+    public function destroy(Work $work)
     {
-        $worker->delete();
-        $worker->status = 2;
-        $worker->save();
+        $work->delete();
+        $work->status = 2;
+        $work->save();
         return back()->with('success', 'Data successfully deleted!!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Worker  $worker
+     * @param  \App\Models\Work  $work
      * @return \Illuminate\Http\Response
      */
-    public function status(Worker $worker)
+    public function status(Work $work)
     {
-        if($worker->status == 1){
-            $worker->status = 2;
-            $worker->save();
+        if($work->status == 1){
+            $work->status = 2;
+            $work->save();
         }else{
-           $worker->status = 1;
-           $worker->save();
+           $work->status = 1;
+           $work->save();
         }
         return back()->with('success', 'Status Updated!');
     }
@@ -153,21 +153,21 @@ class WorkerController extends Controller
      */
     public function restore($id)
     {
-        $data = Worker::onlyTrashed()->where('id', $id)->first();
+        $data = Work::onlyTrashed()->where('id', $id)->first();
         $data->status = 1;
         $data->save();
         $data->restore();
         return back()->with('success', 'Data successfully restored');
     }
 
-    /**
+     /**
      * Remove the specified resource from storage.
      *
      * @return \Illuminate\Http\Response
      */
     public function hardDelete($id)
     {
-        $data = Worker::withTrashed()->find($id);
+        $data = Work::withTrashed()->find($id);
         $path = public_path('storage/worker/'.$data->photo);
         if(file_exists($path)){
             unlink($path);
@@ -175,4 +175,5 @@ class WorkerController extends Controller
         $data -> forceDelete();
         return back()->with('success', 'Data full Delete');
     }
+
 }
