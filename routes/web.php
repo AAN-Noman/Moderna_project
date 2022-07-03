@@ -1,16 +1,20 @@
 <?php
 
-use App\Http\Controllers\Backend\AboutController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\PriceController;
+use App\Http\Controllers\Backend\SkillController;
 use App\Http\Controllers\Backend\AntmanController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BatmanController;
+use App\Http\Controllers\Backend\WorkerController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\IronmanController;
 use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\LanguageController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Backend\TetstimonialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +29,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 
 Route::name("frontend.")->group(function(){
     Route::get('/', [FrontendController::class, 'index'])->name('home');
-    Route::get('/about', [FrontendController::class, 'about'])->name('about');
+    Route::get('/abouts', [FrontendController::class, 'abouts'])->name('abouts');
     Route::get('/services', [FrontendController::class, 'services'])->name('services');
     Route::get('/portfolio', [FrontendController::class, 'portfolio'])->name('portfolio');
     Route::get('/team', [FrontendController::class, 'team'])->name('team');
@@ -79,6 +83,31 @@ Route::name("backend.")->group(function(){
     Route::get('/about/status/{about}', [AboutController::class, 'status'])->name('about.status');
     Route::get('/about/restore/{id}', [AboutController::class, 'restore'])->name('about.restore');
     Route::get('/about/hard/Delete/{id}', [AboutController::class, 'hardDelete'])->name('about.hardDelete');
+
+    //About Skills Section
+    Route::resource('/skill', SkillController::class)->except(["show", "edit", "update"]);
+    Route::get('/skill/status/{skill}', [SkillController::class, 'status'])->name('skill.status');
+    Route::get('/skill/restore/{id}', [SkillController::class, 'restore'])->name('skill.restore');
+    Route::get('/skill/hard/Delete/{id}', [SkillController::class, 'hardDelete'])->name('skill.hardDelete');
+
+    //About Skills Language Section
+    Route::resource('/language', LanguageController::class)->except(["show"]);
+    Route::get('/language/status/{language}', [LanguageController::class, 'status'])->name('language.status');
+    Route::get('/language/restore/{id}', [LanguageController::class, 'restore'])->name('language.restore');
+    Route::get('/language/hard/Delete/{id}', [LanguageController::class, 'hardDelete'])->name('language.hardDelete');
+
+    //About Tetstimonial Section
+    Route::resource('/tetstimonial', TetstimonialController::class)->except(["show", "edit", "update"]);
+    Route::get('/tetstimonial/status/{tetstimonial}', [TetstimonialController::class, 'status'])->name('tetstimonial.status');
+    Route::get('/tetstimonial/restore/{id}', [TetstimonialController::class, 'restore'])->name('tetstimonial.restore');
+    Route::get('/tetstimonial/hard/Delete/{id}', [TetstimonialController::class, 'hardDelete'])->name('tetstimonial.hardDelete');
+
+
+    //About Tetstimonial Section
+    Route::resource('/worker', WorkerController::class)->except(["show"]);
+    Route::get('/worker/status/{worker}', [WorkerController::class, 'status'])->name('worker.status');
+    Route::get('/worker/restore/{id}', [WorkerController::class, 'restore'])->name('worker.restore');
+    Route::get('/worker/hard/Delete/{id}', [WorkerController::class, 'hardDelete'])->name('worker.hardDelete');
 
 
 });

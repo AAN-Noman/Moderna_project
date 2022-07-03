@@ -94,7 +94,7 @@
 
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Service Details:</h6>
+                        <h6 class="collapse-header">Pricing Details:</h6>
                         <a class="collapse-item" href="{{ route('backend.price.index') }}">Pricing Headline</a>
                         <a class="collapse-item" href="{{ route('backend.antman.index') }}">All Pricing</a>
                         <a class="collapse-item" href="{{ route('backend.antman.create') }}">Add Pricing</a>
@@ -103,16 +103,33 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>About Fage</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">About:</h6>
                         <a class="collapse-item" href="{{ route('backend.about.index') }}">All About</a>
                         <a class="collapse-item" href="{{ route('backend.about.create') }}">Add About</a>
+                    </div>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Skill:</h6>
+                        <a class="collapse-item" href="{{ route('backend.skill.index') }}">Skill of Headline</a>
+                        <a class="collapse-item" href="{{ route('backend.language.index') }}">All Skill</a>
+                         <a class="collapse-item" href="{{ route('backend.language.create') }}">Add Skill</a>
+                    </div>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Tetstimonial:</h6>
+                        <a class="collapse-item" href="{{ route('backend.tetstimonial.index') }}">Tetstimonial of Headline</a>
+                        <a class="collapse-item" href="{{ route('backend.worker.index') }}">All Tetstimonial</a>
                     </div>
                 </div>
             </li>

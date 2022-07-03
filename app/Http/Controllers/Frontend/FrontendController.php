@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\About;
+use App\Models\Price;
+use App\Models\Skill;
+use App\Models\Antman;
 use App\Models\Banner;
+use App\Models\Batman;
+use App\Models\Ironman;
 use App\Models\Service;
+use App\Models\Language;
+use App\Models\Tetstimonial;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,9 +24,10 @@ class FrontendController extends Controller
      */
     public function index()
     {
+        $ironman = Ironman::all();
         $datas = Banner::all();
         $services = Service::all();
-        return view('frontend.index', compact('datas', 'services'));
+        return view('frontend.index', compact('datas', 'services', 'ironman'));
     }
 
     /**
@@ -26,9 +35,13 @@ class FrontendController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function about()
+    public function abouts()
     {
-        return view('frontend.about');
+        $skill = Skill::all();
+        $tetstimonial = Tetstimonial::all();
+        $about = About::all();
+        $language = Language::all();
+        return view('frontend.about', compact('about', "skill", 'language', 'tetstimonial'));
     }
 
     /**
@@ -38,8 +51,12 @@ class FrontendController extends Controller
      */
     public function services()
     {
+        $antman = Antman::all();
+        $price = Price::all();
+        $batman = Batman::all();
+        $ironman = Ironman::all();
         $services = Service::all();
-        return view('frontend.services', compact('services'));
+        return view('frontend.services', compact('ironman', 'services', 'batman', 'price', 'antman'));
     }
 
     /**

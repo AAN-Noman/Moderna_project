@@ -41,31 +41,31 @@
             <div class="container">
 
                 <div class="row">
-                    <div class="col-lg-6 video-box">
-                        <img src="{{ asset('frontend/img/why-us.jpg') }}" class="img-fluid" alt="">
-                        <a href="{{ 'https://www.youtube.com/watch?v=jDDaplaOz7Q' }}" class="venobox play-btn mb-4"
-                            data-vbtype="video" data-autoplay="true"></a>
-                    </div>
+                    @foreach ($ironman as $data)
+                        @if ($data->status == 1)
+                            <div class="col-lg-6 video-box">
+                                <img src="{{ asset('/storage/whyus/' . $data->photo) }}" class="img-fluid" alt="">
+                                <a href="{{ $data->link }}" target="_blank" class="venobox play-btn mb-4"
+                                    data-vbtype="video" data-autoplay="true"></a>
+                            </div>
 
-                    <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+                            <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
 
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-fingerprint"></i></div>
-                            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
-                                excepturi sint occaecati cupiditate non provident</p>
-                        </div>
+                                <div class="icon-box">
+                                    <div class="icon"><i class="bx bx-{{ $data->icon }}"></i></div>
+                                    <h4 class="title"><a href="">{{ $data->title }}</a></h4>
+                                    <p class="description">{{ $data->description }}</p>
+                                </div>
 
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-gift"></i></div>
-                            <h4 class="title"><a href="">Nemo Enim</a></h4>
-                            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                praesentium voluptatum deleniti atque</p>
-                        </div>
-
-                    </div>
+                                <div class="icon-box">
+                                    <div class="icon"><i class="bx bx-{{ $data->icon2 }}"></i></div>
+                                    <h4 class="title"><a href="">{{ $data->title2 }}</a></h4>
+                                    <p class="description">{{ $data->title2 }}</p>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
-
             </div>
         </section><!-- End Why Us Section -->
 
@@ -74,67 +74,24 @@
             <div class="container">
 
                 <div class="row">
-                    <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="{{ asset('frontend/img/service-details-1.jpg') }}" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="#">Our Mission</a></h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut
-                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a>
+                    @foreach ($batman as $data)
+                        @if ($data->status == 1)
+                            <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                                <div class="card">
+                                    <div class="card-img">
+                                        <img src="{{ asset('/storage/service_details/' . $data->photo) }}" alt="...">
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="#">{{ $data->title }}</a></h5>
+                                        <p class="card-text">{{ $data->description }}</p>
+                                        <div class="read-more"><a href="{{ $data->link }}" target="_blank"><i class="bi bi-arrow-right"></i> Read
+                                                More</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="{{ asset('frontend/img/service-details-2.jpg') }}" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="#">Our Plan</a></h5>
-                                <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-                                    quasi architecto beatae vitae dicta sunt explicabo</p>
-                                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="{{ asset('frontend/img/service-details-3.jpg') }}" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="#">Our Vision</a></h5>
-                                <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed
-                                    quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est,
-                                    qui dolorem ipsum quia dolor sit amet</p>
-                                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                        <div class="card">
-                            <div class="card-img">
-                                <img src="{{ asset('frontend/img/service-details-4.jpg') }}" alt="...">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="#">Our Care</a></h5>
-                                <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam
-                                    laudantium voluptatem. In molestiae earum ab sit esse voluptatem. Eos ipsam cumque ipsum
-                                    officiis qui nihil aut incidunt aut</p>
-                                <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                 </div>
 
             </div>
@@ -143,55 +100,34 @@
         <!-- ======= Pricing Section ======= -->
         <section class="pricing section-bg" data-aos="fade-up">
             <div class="container">
-
-                <div class="section-title">
-                    <h2>Pricing</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                        fugiat sit in iste officiis commodi quidem hic quas.</p>
-                </div>
+                @foreach ($price as $data)
+                        @if ($data->status == 1)
+                            <div class="section-title">
+                                <h2>{{ $data->title }}</h2>
+                                <p>{{ $data->description }}</p>
+                            </div>
+                        @endif
+                @endforeach
 
                 <div class="row no-gutters">
-
-                    <div class="col-lg-4 box">
-                        <h3>Free</h3>
-                        <h4>$0<span>per month</span></h4>
-                        <ul>
-                            <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                            <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                            <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                            <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                            <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                        </ul>
-                        <a href="#" class="get-started-btn">Get Started</a>
-                    </div>
-
-                    <div class="col-lg-4 box featured">
-                        <h3>Business</h3>
-                        <h4>$29<span>per month</span></h4>
-                        <ul>
-                            <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                            <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                            <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                            <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                            <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
-                        </ul>
-                        <a href="#" class="get-started-btn">Get Started</a>
-                    </div>
-
-                    <div class="col-lg-4 box">
-                        <h3>Developer</h3>
-                        <h4>$49<span>per month</span></h4>
-                        <ul>
-                            <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
-                            <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                            <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                            <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                            <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
-                        </ul>
-                        <a href="#" class="get-started-btn">Get Started</a>
-                    </div>
-
+                    @if ($antman->count())
+                        @foreach ($antman as $data)
+                            @if ($data->status == 1)
+                                <div @if ($loop->iteration == 2) class="col-lg-4 box featured" @else class="col-lg-4 box" @endif>
+                                    <h3>{{ $data->title }}</h3>
+                                    <h4>${{ $data->price }}<span>{{ $data->title2 }}</span></h4>
+                                    <ul>
+                                        <li><i class="bx bx-check"></i> {{ $data->line }}</li>
+                                        <li><i class="bx bx-check"></i> {{ $data->line2 }}</li>
+                                        <li><i class="bx bx-check"></i> {{ $data->line3 }}</li>
+                                        <li><i class="bx bx-check"></i> {{ $data->line4 }}</li>
+                                        <li><i class="bx bx-check"></i> {{ $data->line5 }}</li>
+                                    </ul>
+                                    <a href="{{ $data->link }}" target="_blank" class="get-started-btn">Get Started</a>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
 
             </div>

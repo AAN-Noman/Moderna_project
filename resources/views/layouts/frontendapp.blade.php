@@ -49,7 +49,7 @@
       <nav id="navbar" class="navbar">
         <ul>
         <li><a @yield('index') href="{{ route('frontend.home') }}">Home</a></li>
-        <li><a @yield('about') href="{{ route('frontend.about') }}">About</a></li>
+        <li><a @yield('about') href="{{ route('frontend.abouts') }}">About</a></li>
         <li><a @yield('services') href="{{ route('frontend.services') }}">Services</a></li>
         <li><a @yield('portfolio') href="{{ route('frontend.portfolio') }}">Portfolio</a></li>
         <li><a @yield('team') href="{{ route('frontend.team') }}">Team</a></li>
