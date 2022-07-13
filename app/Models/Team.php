@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Work extends Model
+class Team extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -17,8 +17,12 @@ class Work extends Model
      */
     protected $fillable = [
         'name',
+        'profession',
         'description',
-        'image'=>'required|image|mimes:jpeg,jpg,png,bmp,gif,svg',
-        'proportion'
+        'facebook',
+        'twitter',
+        'instagram',
+        'linkedin',
+        'photo'
     ];
 }

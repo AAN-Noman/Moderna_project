@@ -51,10 +51,10 @@
         <li><a @yield('index') href="{{ route('frontend.home') }}">Home</a></li>
         <li><a @yield('about') href="{{ route('frontend.abouts') }}">About</a></li>
         <li><a @yield('services') href="{{ route('frontend.services') }}">Services</a></li>
-        <li><a @yield('portfolio') href="{{ route('frontend.portfolio') }}">Portfolio</a></li>
-        <li><a @yield('team') href="{{ route('frontend.team') }}">Team</a></li>
+        <li><a @yield('portfolio') href="{{ route('frontend.Portfolios') }}">Portfolio</a></li>
+        <li><a @yield('team') href="{{ route('frontend.teams') }}">Team</a></li>
         <li><a @yield('blog') href="{{ route('frontend.blog') }}">Blog</a></li>
-        <li><a @yield('contact') href="{{ route('frontend.contact') }}">Contact Us</a></li>
+        <li><a @yield('contact') href="{{ route('frontend.contacts') }}">Contact Us</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

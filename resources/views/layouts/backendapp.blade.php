@@ -129,11 +129,58 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tetstimonial:</h6>
                         <a class="collapse-item" href="{{ route('backend.tetstimonial.index') }}">Tetstimonial of Headline</a>
-                        <a class="collapse-item" href="{{ route('backend.work.index') }}">All Tetstimonial</a>
+                        <a class="collapse-item" href="{{ route('backend.ola.index') }}">All Tetstimonial</a>
                     </div>
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Portfolio</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Portfolio:</h6>
+                        <a class="collapse-item" href="{{ route('backend.portfolios.index') }}">Portfolio</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+                    aria-expanded="true" aria-controls="collapseFour">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Teams</span>
+                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Team:</h6>
+                        <a class="collapse-item" href="{{ route('backend.team.index') }}">Team</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
+                    aria-expanded="true" aria-controls="collapseFive">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Contact</span>
+                </a>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Adress:</h6>
+                        <a class="collapse-item" href="{{ route('backend.contact.index') }}">Adress</a>
+                    </div>
+                </div>
+                <div id="collapseFive" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Cluint Message:</h6>
+                        <a class="collapse-item" href="{{ route('backend.message.index') }}">Message</a>
+                    </div>
+                </div>
+            </li>
 
 
             <!-- Divider -->

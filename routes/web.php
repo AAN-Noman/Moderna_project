@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\WorkController;
+use App\Http\Controllers\Backend\OlaController;
+use App\Http\Controllers\Backend\TeamController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\PriceController;
 use App\Http\Controllers\Backend\SkillController;
@@ -10,9 +11,12 @@ use App\Http\Controllers\Backend\AntmanController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BatmanController;
 use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\IronmanController;
+use App\Http\Controllers\Backend\MessageController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\LanguageController;
+use App\Http\Controllers\Backend\PortfolioController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\TetstimonialController;
 
@@ -31,10 +35,10 @@ Route::name("frontend.")->group(function(){
     Route::get('/', [FrontendController::class, 'index'])->name('home');
     Route::get('/abouts', [FrontendController::class, 'abouts'])->name('abouts');
     Route::get('/services', [FrontendController::class, 'services'])->name('services');
-    Route::get('/portfolio', [FrontendController::class, 'portfolio'])->name('portfolio');
-    Route::get('/team', [FrontendController::class, 'team'])->name('team');
+    Route::get('/Portfolios', [FrontendController::class, 'portfolio'])->name('Portfolios');
+    Route::get('/teams', [FrontendController::class, 'teams'])->name('teams');
     Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
-    Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+    Route::get('/contacts', [FrontendController::class, 'contacts'])->name('contacts');
 });
 
 Auth::routes();
@@ -104,10 +108,32 @@ Route::name("backend.")->group(function(){
 
 
     //About Tetstimonial Section
-    Route::resource('/work', WorkController::class)->except(["show"]);
-    Route::get('/work/status/{work}', [WorkController::class, 'status'])->name('work.status');
-    Route::get('/work/restore/{id}', [WorkController::class, 'restore'])->name('work.restore');
-    Route::get('/work/hard/Delete/{id}', [WorkController::class, 'hardDelete'])->name('work.hardDelete');
+    Route::resource('/ola', OlaController::class)->except(["show"]);
+    Route::get('/ola/status/{ola}', [OlaController::class, 'status'])->name('ola.status');
+    Route::get('/ola/restore/{id}', [OlaController::class, 'restore'])->name('ola.restore');
+    Route::get('/ola/hard/Delete/{id}', [OlaController::class, 'hardDelete'])->name('ola.hardDelete');
+
+    //Portfolio Section
+    Route::resource('/portfolios', PortfolioController::class)->except(["show"]);
+    Route::get('/portfolios/status/{portfolio}', [PortfolioController::class, 'status'])->name('portfolios.status');
+    Route::get('/portfolios/restore/{id}', [PortfolioController::class, 'restore'])->name('portfolios.restore');
+    Route::get('/portfolios/hard/Delete/{id}', [PortfolioController::class, 'hardDelete'])->name('portfolios.hardDelete');
+
+    //Team Section
+    Route::resource('/team', TeamController::class)->except(["show"]);
+    Route::get('/team/status/{team}', [TeamController::class, 'status'])->name('team.status');
+    Route::get('/team/restore/{id}', [TeamController::class, 'restore'])->name('team.restore');
+    Route::get('/team/hard/Delete/{id}', [TeamController::class, 'hardDelete'])->name('team.hardDelete');
+
+    //Contact Adress Section
+    Route::resource('/contact', ContactController::class)->except(["show"]);
+    Route::get('/contact/status/{contact}', [ContactController::class, 'status'])->name('contact.status');
+    Route::get('/contact/restore/{id}', [ContactController::class, 'restore'])->name('contact.restore');
+    Route::get('/contact/hard/Delete/{id}', [ContactController::class, 'hardDelete'])->name('contact.hardDelete');
+
+    //Contact claint message Section
+    Route::resource('/message', MessageController::class)->except(["show", "edit", "update"]);
+    Route::get('/message/hard/Delete/{id}', [MessageController::class, 'hardDelete'])->name('message.hardDelete');
 
 
 });

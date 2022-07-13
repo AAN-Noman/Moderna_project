@@ -8,21 +8,21 @@
                 <div class="col-md-12 ">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Edit <a href="{{ route('backend.work.index') }}" class="btn btn-primary btn-sm">Back</a></h2>
+                            <h2>Edit <a href="{{ route('backend.ola.index') }}" class="btn btn-primary btn-sm">Back</a></h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                             <br>
-                            <form action="{{ route('backend.work.update', $worker->id ) }}" method="POST" enctype="multipart/form-data"
+                            <form action="{{ route('backend.ola.update', $ola->id ) }}" method="POST" enctype="multipart/form-data"
                                 class="form-horizontal form-label-left">
                                 @csrf
                                 @method("PUT")
 
                                 <div class="form-group row ">
-                                    <label class="control-label col-md-3 col-sm-3 ">Worker Name:</label>
+                                    <label class="control-label col-md-3 col-sm-3 ">ola Name:</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="name"
-                                            name="name" value="{{$worker->name}}">
+                                            name="title" value="{{$ola->title}}">
                                     </div>
                                 </div>
 
@@ -30,7 +30,7 @@
                                     <label class="control-label col-md-3 col-sm-3 ">:Proportion</label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type="text" class="form-control" placeholder="proportion"
-                                            name="proportion" value="{{$worker->proportion}}">
+                                            name="proportion" value="{{$ola->proportion}}">
                                     </div>
                                 </div>
 
@@ -39,7 +39,7 @@
                                             class="required"></span>
                                     </label>
                                     <div class="col-md-9 col-sm-9 ">
-                                        <textarea class="form-control" rows="3" placeholder="Description" name="description">{{$worker->description}}</textarea>
+                                        <textarea class="form-control" rows="3" placeholder="Description" name="description">{{$ola->description}}</textarea>
                                     </div>
                                 </div>
 
@@ -49,7 +49,7 @@
                                     </label>
                                     <div class="col-md-9 col-sm-9 ">
                                         <input type='file' class="form-control" name="image">
-                                        <img width="100" class='mt-3' src="{{ asset('storage/worker/' . $worker->image) }}" alt="">
+                                        <img width="100" class='mt-3' src="{{ asset('storage/worker/' . $ola->image) }}" alt="">
                                     </div>
                                 </div>
 

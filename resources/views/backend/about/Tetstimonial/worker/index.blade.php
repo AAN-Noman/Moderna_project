@@ -13,16 +13,16 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="{{ route('backend.work.store')}}" method="POST"
+                        <form action="{{ route('backend.ola.store')}}" method="POST" enctype="multipart/form-data"
                             class="form-horizontal form-label-left">
                             @csrf
                             <div class="form-group row ">
                                 <label class="control-label col-md-3 col-sm-3 ">Name:</label>
                                 <div class="col-md-9 col-sm-9 ">
                                     <input type="text" class="form-control" placeholder="Name"
-                                        name="name">
+                                        name="title">
                                 </div>
-                                @error('name')
+                                @error('title')
                                         <p class='text-danger'>{{ $message }}</p>
                                 @enderror
                             </div>
@@ -101,17 +101,19 @@
                                             <img width="100" src="{{ asset('/storage/worker/' . $data->image) }}"
                                                 alt="">
                                         </td>
-                                        <td>{{ $data->name }}</td>
+                                        <td>{{ $data->title }}</td>
                                         <td>{{ $data->proportion }}</td>
                                         <td>{{ $data->description }}</td>
                                         <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
                                         <td class="last">
-                                            <a href="{{ route('backend.work.status', $data->id) }}"
+                                            <a href="{{ route('backend.ola.edit', $data->id) }}"
+                                                class="btn btn-primary btn-sm">View/Edit</a>
+                                            <a href="{{ route('backend.ola.status', $data->id) }}"
                                                 class="btn btn-{{ $data->status == 1 ? 'warning' : 'success' }} btn-sm">
                                                 {{ $data->status == 1 ? 'Deactive' : 'Active' }}
                                             </a>
                                             <form class='d-inline'
-                                                action="{{ route('backend.work.destroy', $data->id) }}" method='POST'>
+                                                action="{{ route('backend.ola.destroy', $data->id) }}" method='POST'>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm">Delete </button>
@@ -153,15 +155,15 @@
                                             <img width="100" src="{{ asset('/storage/worker/' . $data->image) }}"
                                                 alt="">
                                         </td>
-                                        <td>{{ $data->name }}</td>
+                                        <td>{{ $data->title }}</td>
                                         <td>{{ $data->proportion }}</td>
                                         <td>{{ $data->description }}</td>
                                         <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
                                         <td class="last">
-                                            <a href="{{ route('backend.work.restore', $data->id) }}"
+                                            <a href="{{ route('backend.ola.restore', $data->id) }}"
                                                 class="btn btn-primary btn-sm">Restore</a>
 
-                                            <button id="delete" value="{{ route('backend.work.hardDelete', $data->id) }}" class="btn btn-danger btn-sm">Hard Delete</button>
+                                            <button id="delete" value="{{ route('backend.ola.hardDelete', $data->id) }}" class="btn btn-danger btn-sm">Hard Delete</button>
                                     </tr>
                                 @empty
                                 @endforelse

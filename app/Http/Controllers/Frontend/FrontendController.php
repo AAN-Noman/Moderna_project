@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Ola;
+use App\Models\Team;
 use App\Models\About;
 use App\Models\Price;
 use App\Models\Skill;
 use App\Models\Antman;
 use App\Models\Banner;
 use App\Models\Batman;
+use App\Models\Contact;
 use App\Models\Ironman;
 use App\Models\Service;
 use App\Models\Language;
+use App\Models\Portfolio;
 use App\Models\Tetstimonial;
-use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
 use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
@@ -37,11 +41,12 @@ class FrontendController extends Controller
      */
     public function abouts()
     {
+        $worker = Ola::all();
         $skill = Skill::all();
         $tetstimonial = Tetstimonial::all();
         $about = About::all();
         $language = Language::all();
-        return view('frontend.about', compact('about', "skill", 'language', 'tetstimonial'));
+        return view('frontend.about', compact('about', "skill", 'language', 'tetstimonial', 'worker'));
     }
 
     /**
@@ -66,7 +71,8 @@ class FrontendController extends Controller
      */
     public function portfolio()
     {
-        return view('frontend.portfolio');
+        $portfolio = Portfolio::all();
+        return view('frontend.Portfolio', compact('portfolio'));
     }
 
     /**
@@ -74,9 +80,10 @@ class FrontendController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function team()
+    public function teams()
     {
-        return view('frontend.team');
+        $team = Team::all();
+        return view('frontend.team', compact('team'));
     }
 
     /**
@@ -94,8 +101,10 @@ class FrontendController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function contact()
+    public function contacts()
     {
-        return view('frontend.contact');
+        $contact = Contact::all();
+        return view('frontend.contact', compact('contact'));
     }
 }
+
