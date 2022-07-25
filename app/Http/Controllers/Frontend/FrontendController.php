@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\Support\ServiceProvider;
 use App\Models\Ola;
 use App\Models\Team;
 use App\Models\About;
@@ -16,7 +17,6 @@ use App\Models\Service;
 use App\Models\Language;
 use App\Models\Portfolio;
 use App\Models\Tetstimonial;
-use Illuminate\Mail\Message;
 use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
@@ -107,4 +107,5 @@ class FrontendController extends Controller
         return view('frontend.contact', compact('contact'));
     }
 }
+
 

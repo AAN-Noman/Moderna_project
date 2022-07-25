@@ -21,11 +21,8 @@
         <!-- ======= Contact Section ======= -->
         <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
             <div class="container">
-
                 <div class="row">
-
                     <div class="col-lg-6">
-
                         @foreach ($contact as $data)
                             @if ($data->status == 1)
                                 <div class="row">
@@ -53,7 +50,6 @@
                                 </div>
                             @endif
                         @endforeach
-
                     </div>
 
                     <div class="col-lg-6">

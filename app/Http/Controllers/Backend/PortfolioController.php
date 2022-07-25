@@ -14,11 +14,16 @@ class PortfolioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $DataTranshed = Portfolio::onlyTrashed()->get();
-        $datas = Portfolio::all();
-        return view('backend.portfolio.index', compact('datas', 'DataTranshed'));
+        $search = $request['search'] ?? "";
+        if ($search != "") {
+            $datas = Portfolio::where('title', 'LIKE', '%'.$search.'%')->get();
+        }else{
+            $datas = Portfolio::all();
+        }
+            $DataTranshed = Portfolio::onlyTrashed()->get();
+            return view('backend.portfolio.index', compact('datas', 'DataTranshed'));
     }
 
     /**

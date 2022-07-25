@@ -14,10 +14,15 @@ class IronmanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request['search'] ?? "";
+        if ($search != ""){
+            $datas = Ironman::where('title', 'LIKE', '%'.$search.'%')->orwhere('title2', 'LIKE', '%'.$search.'%')->get();
+        }else{
+            $datas = Ironman::all();
+        }
         $DataTranshed = Ironman::onlyTrashed()->get();
-        $datas = Ironman::all();
         return view('backend.services.whyus.index', compact('datas', 'DataTranshed'));
     }
 

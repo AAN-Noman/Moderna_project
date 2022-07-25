@@ -14,10 +14,15 @@ class BatmanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $datas = Batman::where('title', "LIKE", "%".$search."%")->orwhere('description', "LIKE", "%".$search."%")->get();
+        }else{
+            $datas = Batman::all();
+        }
         $DataTranshed = Batman::onlyTrashed()->get();
-        $datas = Batman::all();
         return view('backend.services.service_details.index', compact('datas', 'DataTranshed'));
     }
 

@@ -49,7 +49,7 @@
                                             <td>{{ Str::limit($data->description2, 25, '...') }}</td>
                                             <td>{{ $data->icon2 }}</td>
                                             <td>{{ $data->link }}</td>
-                                            <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                            <td><p class="text-{{ $data->status == 1 ? 'primary' : 'warning' }}">{{ $data->status == 1 ? 'Active' : 'Deactive' }}</p></td>
                                             <td class="last inline">
                                                 <a href="{{ route('backend.ironman.status', $data->id) }}"
                                                     class="btn btn-{{ $data->status == 1 ? 'warning' : 'success' }} btn-sm">
@@ -111,7 +111,7 @@
                                             <td>{{ Str::limit($data->description2, 25, '...') }}</td>
                                             <td>{{ $data->icon2 }}</td>
                                             <td>{{ $data->link }}</td>
-                                            <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                            <td><p class="text-{{ $data->status == 1 ? 'primary' : 'warning' }}">{{ $data->status == 1 ? 'Active' : 'Deactive' }}</p></td>
                                             <td class="last inline-block">
                                                 <a href="{{ route('backend.ironman.restore', $data->id) }}"
                                                     class="btn btn-primary btn-sm">Restore</a>

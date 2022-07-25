@@ -13,10 +13,15 @@ class AntmanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request['search'] ?? "";
+        if($search != "") {
+            $datas = Antman::where('title', "LIKE", "%".$search."%")->orwhere('title2', "LIKE", "%".$search."%")->get();
+        }else {
+            $datas = Antman::all();
+        }
         $DataTranshed = Antman::onlyTrashed()->get();
-        $datas = Antman::all();
         return view('backend.services.pricing.index', compact('datas', 'DataTranshed'));
     }
 

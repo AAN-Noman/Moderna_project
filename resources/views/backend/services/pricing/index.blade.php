@@ -41,7 +41,7 @@
                                         <td>{{ Str::limit($data->line4, 10, '...') }}</td>
                                         <td>{{ Str::limit($data->line5, 10, '...') }}</td>
                                         <td>{{ Str::limit($data->link, 10, '...') }}</td>
-                                        <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                        <td><p class="text-{{ $data->status == 1 ? 'primary' : 'warning' }}">{{ $data->status == 1 ? 'Active' : 'Deactive' }}</p></td>
                                         <td class="last">
                                             <a href="{{ route('backend.antman.status', $data->id) }}"
                                                 class="btn btn-{{ $data->status == 1 ? 'warning' : 'success' }} btn-sm">
@@ -102,7 +102,7 @@
                                         <td>{{ Str::limit($data->line4, 10, '...') }}</td>
                                         <td>{{ Str::limit($data->line5, 10, '...') }}</td>
                                         <td>{{ Str::limit($data->link, 10, '...') }}</td>
-                                        <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                        <td><p class="text-{{ $data->status == 1 ? 'primary' : 'warning' }}">{{ $data->status == 1 ? 'Active' : 'Deactive' }}</p></td>
                                         <td class="last">
                                             <a href="{{ route('backend.antman.restore', $data->id) }}"
                                                 class="btn btn-primary btn-sm">Restore</a>

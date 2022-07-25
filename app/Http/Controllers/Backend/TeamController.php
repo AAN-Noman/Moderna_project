@@ -15,10 +15,15 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $datas = Team::where('name', 'LIKE', "%".$search."%")->orwhere('profession', 'LIKE', '%'.$search.'%')->orwhere('description', 'LIKE', '%'.$search.'%')->get();
+        }else{
+            $datas = Team::all();
+        }
         $DataTranshed = Team::onlyTrashed()->get();
-        $datas = Team::all();
         return view('backend.team.index', compact('datas', 'DataTranshed'));
     }
 

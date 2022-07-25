@@ -98,7 +98,7 @@
                                         <td>{{ $data->email2 }}</td>
                                         <td>{{ $data->phone }}</td>
                                         <td>{{ $data->phone2 }}</td>
-                                        <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                        <td><p class="text-{{ $data->status == 1 ? 'primary' : 'warning' }}">{{ $data->status == 1 ? 'Active' : 'Deactive' }}</p></td>
                                         <td class="last">
                                             <a href="{{ route('backend.contact.status', $data->id) }}"
                                                 class="btn btn-{{ $data->status == 1 ? 'warning' : 'success' }} btn-sm">
@@ -151,7 +151,7 @@
                                         <td>{{ $data->email2 }}</td>
                                         <td>{{ $data->phone }}</td>
                                         <td>{{ $data->phone2 }}</td>
-                                        <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                        <td><p class="text-{{ $data->status == 1 ? 'primary' : 'warning' }}">{{ $data->status == 1 ? 'Active' : 'Deactive' }}</p></td>
                                         <td class="last">
                                             <a href="{{ route('backend.contact.restore', $data->id) }}"
                                                 class="btn btn-primary btn-sm">Restore</a>

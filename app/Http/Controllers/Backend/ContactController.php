@@ -13,10 +13,15 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request["search"] ?? "";
+        if($search != ""){
+            $datas = Contact::where('address', 'LIKE', '%'.$search.'%')->orwhere('email', 'LIKE', '%'.$search.'%')->orwhere('email2', 'LIKE', '%'.$search.'%')->orwhere('phone', 'LIKE', '%'.$search.'%')->orwhere('phone2', 'LIKE', '%'.$search.'%')->get();
+        }else{
+            $datas = Contact::all();
+        }
         $DataTranshed = Contact::onlyTrashed()->get();
-        $datas = Contact::all();
         return view('backend.contact.address.index', compact('datas', 'DataTranshed'));
     }
 

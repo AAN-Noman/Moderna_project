@@ -13,10 +13,15 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $datas = Service::where('title', 'LIKE', "%".$search."%")->orwhere('description', 'LIKE', '%'.$search.'%')->get();
+        }else{
+            $datas = Service::all();
+        }
         $DataTranshed = Service::onlyTrashed()->get();
-        $datas = Service::all();
         return view('backend.services.service.index', compact('datas', 'DataTranshed'));
     }
 

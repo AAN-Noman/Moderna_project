@@ -90,11 +90,11 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('frontend.home') }}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('frontend.abouts') }}">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('frontend.services') }}">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('frontend.teams') }}">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('frontend.contacts') }}">Privacy policy</a></li>
             </ul>
           </div>
 
@@ -110,15 +110,15 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-
+            @foreach ($boots as $data)
+                @if ($data->status == 1)
+                    <h4>Contact Us</h4>
+                    <p>{{ $data->address }}<br>
+                    <strong>Phone:</strong> {{ $data->phone }},<br>{{$data->phone2 }}<br>
+                    <strong>Email:</strong> {{ $data->email }},<br>{{$data->email2 }}<br>
+                    </p>
+                @endif
+            @endforeach
           </div>
 
           <div class="col-lg-3 col-md-6 footer-info">

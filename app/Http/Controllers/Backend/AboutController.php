@@ -14,10 +14,15 @@ class AboutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $datas = About::where('title', 'LIKE', "%".$search."%")->get();
+        }else{
+            $datas = About::all();
+        }
         $DataTranshed = About::onlyTrashed()->get();
-        $datas = About::all();
         return view('backend.about.index', compact('datas', 'DataTranshed'));
     }
 

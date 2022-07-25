@@ -104,7 +104,7 @@
                                         <td>{{ $data->title }}</td>
                                         <td>{{ $data->proportion }}</td>
                                         <td>{{ $data->description }}</td>
-                                        <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                        <td><p class="text-{{ $data->status == 1 ? 'primary' : 'warning' }}">{{ $data->status == 1 ? 'Active' : 'Deactive' }}</p></td>
                                         <td class="last">
                                             <a href="{{ route('backend.ola.edit', $data->id) }}"
                                                 class="btn btn-primary btn-sm">View/Edit</a>
@@ -158,7 +158,7 @@
                                         <td>{{ $data->title }}</td>
                                         <td>{{ $data->proportion }}</td>
                                         <td>{{ $data->description }}</td>
-                                        <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                        <td><p class="text-{{ $data->status == 1 ? 'primary' : 'warning' }}">{{ $data->status == 1 ? 'Active' : 'Deactive' }}</p></td>
                                         <td class="last">
                                             <a href="{{ route('backend.ola.restore', $data->id) }}"
                                                 class="btn btn-primary btn-sm">Restore</a>

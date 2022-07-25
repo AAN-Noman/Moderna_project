@@ -14,10 +14,15 @@ class OlaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request['search'] ?? "";
+        if($search != ""){
+            $datas = Ola::where('title', 'LIKE', '%'.$search.'%')->orwhere('proportion', 'LIKE', '%'.$search.'%')->orwhere('description', 'LIKE', '%'.$search.'%')->get();
+        }else{
+            $datas = Ola::all();
+        }
         $DataTranshed = Ola::onlyTrashed()->get();
-        $datas = Ola::all();
         return view('backend.about.Tetstimonial.worker.index', compact('datas', 'DataTranshed'));
     }
 

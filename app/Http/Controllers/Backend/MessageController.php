@@ -13,9 +13,14 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datas = Message::all();
+        $search = $request['search'] ?? "";
+        if ($search != ""){
+            $datas = Message::where('name', 'LIKE', '%'.$search.'%')->orwhere('email', 'LIKE', '%'.$search.'%')->orwhere('subject', 'LIKE', '%'.$search.'%')->orwhere('message', 'LIKE', '%'.$search.'%')->get();
+        }else{
+            $datas = Message::all();
+        }
         return view('backend.Contact.Message.message', compact('datas'));
     }
 
@@ -48,7 +53,7 @@ class MessageController extends Controller
         $insert->subject = $request->subject;
         $insert->message = $request->message;
         $insert->save();
-        return redirect(route('backend.message.create'));
+        return redirect(route('frontend.contacts'));
     }
 
     /**

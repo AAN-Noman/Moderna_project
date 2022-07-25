@@ -150,7 +150,7 @@
                                         <td>{{ Str::limit($data->facebook, 10, '...') }}</td>
                                         <td>{{ Str::limit($data->instagram, 10, '...') }}</td>
                                         <td>{{ Str::limit($data->linkedin, 10, '...') }}</td>
-                                        <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                        <td><p class="text-{{ $data->status == 1 ? 'primary' : 'warning' }}">{{ $data->status == 1 ? 'Active' : 'Deactive' }}</p></td>
                                         <td class="last">
                                             <a href="{{ route('backend.team.edit', $data->id) }}"
                                                 class="btn btn-primary btn-sm">View/Edit</a>
@@ -212,7 +212,7 @@
                                         <td>{{ Str::limit($data->facebook, 10, '...') }}</td>
                                         <td>{{ Str::limit($data->instagram, 10, '...') }}</td>
                                         <td>{{ Str::limit($data->linkedin, 10, '...') }}</td>
-                                        <td>{{ $data->status == 1 ? 'Active' : 'Deactive' }}</td>
+                                        <td><p class="text-{{ $data->status == 1 ? 'primary' : 'warning' }}">{{ $data->status == 1 ? 'Active' : 'Deactive' }}</p></td>
                                         <td class="last">
                                             <a href="{{ route('backend.team.restore', $data->id) }}"
                                                 class="btn btn-primary btn-sm">Restore</a>

@@ -14,10 +14,15 @@ class BannerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request['search'] ?? "";
+        if ($search != ""){
+            $datas = Banner::where('title', "LIKE", "%".$search."%")->orwhere('description', "LIKE", "%".$search."%")->get();
+        }else{
+            $datas = Banner::all();
+        }
         $DataTranshed = Banner::onlyTrashed()->get();
-        $datas = Banner::all();
         return view('backend.banner.index', compact('datas', 'DataTranshed'));
     }
 
